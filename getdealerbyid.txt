@@ -1,0 +1,15 @@
+[
+  {
+    "_id": "69668aef3a6bb651a067ec09",
+    "id": 2,
+    "city": "Minneapolis",
+    "state": "Minnesota",
+    "address": "6337 Butternut Crossing",
+    "zip": "55402",
+    "lat": "44.9762",
+    "long": "-93.2759",
+    "short_name": "Temp",
+    "full_name": "Temp Car Dealership",
+    "__v": 0
+  }
+]
