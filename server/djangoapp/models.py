@@ -31,21 +31,23 @@ class CarMake(models.Model):
 # - Any other fields you would like to include in car model
 # - __str__ method to print a car make object
 class CarModel(models.Model):
-    car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
-    dealer_id = models.IntegerField()
-    name = models.CharField(max_length=100)
-    type = [
+    CAR_TYPE_CHOICES = [
         ('SEDAN', 'Sedan'),
         ('SUV', 'SUV'),
         ('WAGON', 'Wagon'),
     ]
-    year = models.IntegerField(default=2023,
-        validators = [
-            MaxValueValidator(2023),
-            MinValueValidator(2015)
+
+    car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE, related_name="models")
+    dealer_id = models.IntegerField(null=True, blank=True)
+    name = models.CharField(max_length=100)
+    type = models.CharField(max_length=10, choices=CAR_TYPE_CHOICES)
+    year = models.IntegerField(
+        validators=[
+            MinValueValidator(2015),
+            MaxValueValidator(2023)
         ]
     )
 
     def __str__(self):
-        return self.name
+        return f"{self.car_make.name} {self.name} ({self.year})"
 
