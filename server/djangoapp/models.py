@@ -15,7 +15,6 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class CarMake(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=500)
-    material = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
@@ -31,17 +30,19 @@ class CarMake(models.Model):
 # - Any other fields you would like to include in car model
 # - __str__ method to print a car make object
 class CarModel(models.Model):
-    car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
-    dealer_id = models.IntegerField()
-    name = models.CharField(max_length=100)
-    type = [
+    CAR_TYPES = [
         ('SEDAN', 'Sedan'),
         ('SUV', 'SUV'),
         ('WAGON', 'Wagon'),
     ]
+    
+    car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
+    dealer_id = models.IntegerField()
+    name = models.CharField(max_length=100)
+    type = models.CharField(max_length=10, choices=CAR_TYPES, default='SEDAN')
     year = models.IntegerField(default=2023,
-        validators = [
-            MaxValueValidator(2023),
+        validators=[
+            MaxValueValidator(2026),
             MinValueValidator(2015)
         ]
     )
