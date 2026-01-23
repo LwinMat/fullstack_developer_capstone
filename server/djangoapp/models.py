@@ -19,7 +19,6 @@ class CarMake(models.Model):
     def __str__(self):
         return self.name
 
-
 # <HINT> Create a Car Model model `class CarModel(models.Model):`:
 # - Many-To-One relationship to Car Make model (One Car Make has many
 # Car Models, using ForeignKey field)
