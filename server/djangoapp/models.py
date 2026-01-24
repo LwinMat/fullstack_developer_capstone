@@ -17,9 +17,9 @@ class CarMake(models.Model):
 
 class CarModel(models.Model):
     CAR_TYPE_CHOICES = [
-        ('SEDAN', 'Sedan'),
         ('SUV', 'SUV'),
-        ('WAGON', 'Wagon'),
+        ('Sedan', 'Sedan'),
+        ('Wagon', 'Wagon'),
     ]
 
     car_make = models.ForeignKey(
@@ -30,7 +30,8 @@ class CarModel(models.Model):
 
     dealer_id = models.IntegerField(null=True, blank=True)
     name = models.CharField(max_length=100)
-    type = models.CharField(max_length=10, choices=CAR_TYPE_CHOICES)
+    # Default ensures seed data succeeds even if type omitted in future
+    type = models.CharField(max_length=10, choices=CAR_TYPE_CHOICES, default='SUV')
 
     # Year kept ONLY for listing/filtering, NOT reviews
     year = models.IntegerField(
