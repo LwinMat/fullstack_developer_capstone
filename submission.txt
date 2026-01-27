@@ -18,4 +18,3 @@ For more information on production servers see: https://docs.djangoproject.com/e
 
 
 https://github.com/LwinMat/fullstack_developer_capstone/blob/main/server/frontend/static/Contact.html
-
